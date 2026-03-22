@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #07090F;
+  color: #E8EAF2;
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(245,166,35,0.25); border-radius: 2px; }
+
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+.font-condensed { font-family: 'Barlow Condensed', sans-serif; }
+
+@layer components {
+  .gold-border { border: 1px solid rgba(245,166,35,0.2); }
+  .gold-border-strong { border: 1px solid rgba(245,166,35,0.5); }
+  .card { @apply bg-s2 rounded-xl; border: 1px solid rgba(245,166,35,0.2); }
+  .surface { @apply bg-s1; border: 1px solid rgba(245,166,35,0.2); }
+
+  .badge { @apply font-condensed text-xs font-bold tracking-widest uppercase rounded px-2 py-0.5; }
+  .badge-role { @apply badge; background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.25); color: #F5A623; }
+  .badge-capped { @apply badge; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25); color: #4ADE80; }
+  .badge-uncapped { @apply badge bg-s4; border: 1px solid rgba(255,255,255,0.1); color: #5A6478; }
+
+  .btn-gold { @apply bg-gold text-black font-condensed font-bold tracking-wider rounded-lg transition-opacity hover:opacity-90 active:scale-95; }
+  .btn-ghost { @apply bg-transparent font-condensed font-bold tracking-wider rounded-lg transition-all; border: 1px solid rgba(255,255,255,0.15); color: #9AA3B8; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.3); color: #E8EAF2; }
+  .btn-bid { @apply font-condensed font-bold tracking-wider rounded-lg transition-all; background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.2); color: #F5A623; }
+  .btn-bid:hover { background: rgba(245,166,35,0.2); border-color: rgba(245,166,35,0.5); }
+
+  .purse-bar { @apply h-0.5 rounded-full overflow-hidden; background: rgba(255,255,255,0.1); }
+  .purse-fill { @apply h-full rounded-full transition-all duration-500 bg-gold; }
+}

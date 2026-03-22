@@ -1,0 +1,43 @@
+import { create } from 'zustand';
+
+export const useGameStore = create((set) => ({
+  roomCode: null,
+  playerTeamIdx: null,
+  isHost: false,
+  isSolo: false,
+  teams: [],
+  players: [],
+  soldCount: 0,
+  unsoldCount: 0,
+  poolLength: 150,
+  currentPlayer: null,
+  lot: 1,
+  currentBid: 0,
+  leadingTeam: null,
+  bidHistory: [],
+  timerVal: 15,
+  auctionEnded: false,
+  youPassed: false,
+  lastResult: null,
+  currentCategory: null, // { role, cap, label } — shown between categories
+
+  setRoom: (data) => set((s) => ({ ...s, ...data })),
+  setTeams: (teams) => set({ teams }),
+  setCurrentPlayer: (player, lot) => set({ currentPlayer: player, lot, youPassed: false, lastResult: null }),
+  setCurrentBid: (amount, teamIdx, bidHistory) => set({ currentBid: amount, leadingTeam: teamIdx, bidHistory }),
+  setTimer: (val) => set({ timerVal: val }),
+  setYouPassed: () => set({ youPassed: true }),
+  setSold: (result) => set({ lastResult: result }),
+  setUnsold: (result) => set({ lastResult: result }),
+  setStats: ({ soldCount, unsoldCount, poolLeft }) => set({ soldCount, unsoldCount, poolLength: poolLeft }),
+  setAuctionEnded: (teams) => set({ auctionEnded: true, teams }),
+  setCategory: (cat) => set({ currentCategory: cat, currentPlayer: null }),
+  clearCategory: () => set({ currentCategory: null }),
+  reset: () => set({
+    roomCode: null, playerTeamIdx: null, isHost: false, isSolo: false,
+    teams: [], players: [], soldCount: 0, unsoldCount: 0, poolLength: 150,
+    currentPlayer: null, lot: 1, currentBid: 0, leadingTeam: null,
+    bidHistory: [], timerVal: 15, auctionEnded: false, youPassed: false,
+    lastResult: null, currentCategory: null,
+  }),
+}));
